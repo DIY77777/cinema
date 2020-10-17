@@ -6,14 +6,12 @@ import com.zrkworld.cinema.pojo.CinemaResult;
 import com.zrkworld.cinema.pojo.PageResult;
 import com.zrkworld.cinema.pojo.Record;
 import com.zrkworld.cinema.service.RecordService;
-import org.eclipse.jdt.internal.compiler.codegen.CachedIndexEntry;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
-
 @RestController
 public class RecordController {
     @Resource
