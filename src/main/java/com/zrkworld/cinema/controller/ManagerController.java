@@ -54,7 +54,7 @@ public class ManagerController {
             String token = UUID.randomUUID().toString();
             redisUtil.setStr(token, JSON.toJSONString(manager),60*30, TimeUnit.SECONDS);
             Map<String, Object> map = new HashMap<>();
-            map.put("uToken", token);
+            map.put("token", token);
             map.put("tokenUser", manager);
             return CinemaResult.ok(map);
         }

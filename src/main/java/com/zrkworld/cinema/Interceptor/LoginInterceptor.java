@@ -1,16 +1,12 @@
 package com.zrkworld.cinema.Interceptor;
 
 import com.zrkworld.cinema.Config.RedisUtil;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -36,12 +32,12 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
 
         //2.拿到请求头里面的token（如果是第一次登录，那么是没有请求头的）
-        String token = request.getHeader("u-token");
+        String token = request.getHeader("token");
+        System.out.println(token);
         if(token==null){
             response.setContentType("application/json; charset=utf-8");
-
             //2.1 拦截请求并返回信息给前台 （前台后置拦截器就是根据这里面返回的json数据，来判读并跳转到登录界面）
-            response.getWriter().print("{\"success\":false,\"msg\":\"NoUser\"}");
+            response.getWriter().print("没有token");
             return false;
         }
 
@@ -50,7 +46,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         if(tokenUser==null){
             response.setContentType("application/json; charset=utf-8");
 
-            response.getWriter().print("{\"success\":false,\"msg\":\"NoUser\"}");
+            response.getWriter().print("没有token用户数据");
             return false;
         }
 
