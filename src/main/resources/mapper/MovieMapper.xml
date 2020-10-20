@@ -17,7 +17,7 @@
   <select id="selectAllMovie" resultType="com.zrkworld.cinema.pojo.Movie">
     select movieid,name,price,integral,DATE_FORMAT(time,'%Y-%m-%d %T') as time
     from movie
-    order by time desc
+    order by movieid desc
   </select>
 
   <select id="selectMovieCount" resultType="LONG">
